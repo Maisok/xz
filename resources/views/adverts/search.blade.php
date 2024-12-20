@@ -169,10 +169,10 @@
                 xl:flex w-full flex-col items-start justify-center 
                 2xl:flex w-full flex-col items-start justify-center">
     @foreach($adverts as $advert)
-    <div class="blockadvert bg-white rounded-lg shadow-md flex max-w-5xl w-full p-4 mt-8 cursor-pointer transition-colors duration-300 hover:bg-[#f0f8ff]" onclick="location.href='{{ route('adverts.show', $advert->id) }}'" tabindex="0" role="button">
+    <div class="blockadvert bg-white rounded-lg shadow-md flex max-w-5xl w-full mt-8 cursor-pointer transition-colors duration-300 hover:bg-[#f0f8ff]" onclick="location.href='{{ route('adverts.show', $advert->id) }}'" tabindex="0" role="button">
         <!-- Вывод главного фото -->
         <div class="w-1/4 flex-shrink-0">
-            <div class="w-full aspect-square bg-gray-200 rounded-lg overflow-hidden">
+            <div class="w-[220px] h-[175px] bg-gray-200 rounded-lg overflow-hidden">
                 @if ($advert->main_photo_url)
                     <img src="{{ $advert->main_photo_url }}" alt="{{ $advert->product_name }} - Главное фото" class="w-full h-full object-cover">
                 @else
@@ -181,20 +181,20 @@
             </div>
         </div>
     
-        <div class="flex flex-col justify-between w-3/4 pl-4">
+        <div class="flex flex-col justify-between w-3/4 pl-10">
             <div class="flex justify-between items-start">
-                <div>
+                <div class="pt-4">
                     <h2 class="text-xl font-semibold">{{ $advert->product_name }}</h2>
                     @if($advert->number)
-                    <p class="beg bg-gray-200 px-3 py-1 w-24 text-sm rounded-lg text-center">{{ $advert->number }}</p>
+                    <p class="beg bg-gray-200 mt-4 px-3 py-1 w-24 text-sm rounded-lg text-center">{{ $advert->number }}</p>
                 @endif
                 </div>
-                <div class="text-right">
+                <div class="text-right pr-4 pt-4">
                     <p class="text-xl font-semibold">{{ $advert->price }} ₽</p>
                     <p class="text-red-500">{{ $advert->user->userAddress->city ?? 'Не указан' }}</p>
                 </div>
             </div>
-            <div class="flex space-x-3 mt-4 w-full justify-start">
+            <div class="flex space-x-3 pb-4 w-full justify-start">
                 @if($advert->brand)
                 <span class="bg-[#FFE6C1] text-black text-sm font-semibold px-2.5 py-0.5 rounded">{{ $advert->brand }}</span>
             @endif
